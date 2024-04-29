@@ -15,3 +15,9 @@ jobs:
           cache-dependency-path: package-lock.json
       - run: npm install
       - run: npm test  # jest --coverage
+      # Sonar cloud scan
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
